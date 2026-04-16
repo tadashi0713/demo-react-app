@@ -23,6 +23,7 @@ pipeline:
                   identifier: installdependencies
                   name: install dependencies
                   spec:
+                    shell: Bash
                     command: npm install
                   timeout: ""
                   type: Run
@@ -30,20 +31,15 @@ pipeline:
                   identifier: test
                   name: test
                   spec:
+                    shell: Bash
                     command: npm run test
-                  timeout: ""
-                  type: Run
-              - step:
-                  identifier: lint
-                  name: lint
-                  spec:
-                    command: npm run lint
                   timeout: ""
                   type: Run
               - step:
                   identifier: build
                   name: build
                   spec:
+                    shell: Bash
                     command: npm run build
                   timeout: ""
                   type: Run
