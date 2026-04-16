@@ -25,7 +25,7 @@ function App() {
           borderRadius: '8px'
         }}
       >
-        クリック
+        Click
       </button>
       {showHello && <h1>Hello</h1>}
     </div>
