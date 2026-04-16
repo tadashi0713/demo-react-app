@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_tadashi0713_demo_react_app_1776311028227-pr-trigger-input-set
+  identifier: Build_tadashi0713_demo_react_app_1776311028227prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Build_tadashi0713_demo_react_app_1776311028227
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
