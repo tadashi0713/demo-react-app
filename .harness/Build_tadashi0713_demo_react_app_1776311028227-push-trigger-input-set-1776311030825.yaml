@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_tadashi0713_demo_react_app_1776311028227-push-trigger-input-set
+  identifier: Build_tadashi0713_demo_react_app_1776311028227pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Build_tadashi0713_demo_react_app_1776311028227
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
