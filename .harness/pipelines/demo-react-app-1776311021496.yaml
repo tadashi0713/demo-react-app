@@ -46,6 +46,8 @@ pipeline:
                     tags:
                       - latest
                     caching: true
+                    baseImageConnectorRefs:
+                      - account.dockerhub
                   timeout: ""
                   type: BuildAndPushDockerRegistry
           platform:
