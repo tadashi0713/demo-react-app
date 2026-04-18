@@ -71,10 +71,7 @@ pipeline:
             arch: Amd64
           runtime:
             type: Cloud
-            spec:
-              imageSpec:
-                imageName: node:25-alpine
-                connectorRef: account.dockerhub
+            spec: {}
         type: CI
     - stage:
         name: Docker
