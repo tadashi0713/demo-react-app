@@ -30,6 +30,7 @@ pipeline:
                       mkdir $HOME/nodejs
                       curl -L https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz | tar xJ -C $HOME/nodejs
                       export PATH=$HOME/nodejs/node-v${NODE_VERSION}-linux-x64/bin:$PATH
+                      node --version
                       npm install
                     envVariables:
                       NODE_VERSION: 24.15.0
