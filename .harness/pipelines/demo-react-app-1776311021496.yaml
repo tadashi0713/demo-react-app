@@ -16,15 +16,14 @@ pipeline:
         spec:
           caching:
             enabled: true
+            paths: []
           cloneCodebase: true
           execution:
             steps:
               - step:
-                  identifier: installdependencies
-                  name: build and test
+                  identifier: test
+                  name: test
                   spec:
-                    connectorRef: account.dockerhub
-                    image: node/lts-alpine3.22
                     shell: Bash
                     command: |-
                       mkdir $HOME/nodejs
@@ -32,18 +31,9 @@ pipeline:
                       export PATH=$HOME/nodejs/node-v${NODE_VERSION}-linux-x64/bin:$PATH
                       node --version
                       npm install
+                      npm run test
                     envVariables:
                       NODE_VERSION: 24.15.0
-                  timeout: ""
-                  type: Run
-              - step:
-                  identifier: test
-                  name: test
-                  spec:
-                    shell: Bash
-                    command: |-
-                      node --version
-                      npm run test
                   timeout: ""
                   type: Run
               - step:
@@ -71,7 +61,10 @@ pipeline:
           runtime:
             type: Cloud
             spec: {}
+          buildIntelligence:
+            enabled: true
         type: CI
+        description: ""
     - stage:
         name: Docker
         identifier: Docker
