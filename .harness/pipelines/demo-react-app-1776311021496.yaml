@@ -21,12 +21,18 @@ pipeline:
             steps:
               - step:
                   identifier: installdependencies
-                  name: install dependencies
+                  name: build and test
                   spec:
                     connectorRef: account.dockerhub
                     image: node/lts-alpine3.22
                     shell: Bash
-                    command: npm install
+                    command: |-
+                      mkdir $HOME/nodejs
+                      curl -L https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz | tar xJ -C $HOME/nodejs
+                      export PATH=$HOME/nodejs/node-v${NODE_VERSION}-linux-x64/bin:$PATH
+                      npm install
+                    envVariables:
+                      NODE_VERSION: 24.15.0
                   timeout: ""
                   type: Run
               - step:
@@ -63,10 +69,7 @@ pipeline:
             arch: Amd64
           runtime:
             type: Cloud
-            spec:
-              imageSpec:
-                imageName: node/lts-alpine3.22
-                connectorRef: account.dockerhub
+            spec: {}
         type: CI
     - stage:
         name: Docker
