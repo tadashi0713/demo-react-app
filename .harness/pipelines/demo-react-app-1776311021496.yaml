@@ -44,7 +44,9 @@ pipeline:
                   name: test
                   spec:
                     shell: Bash
-                    command: npm run test
+                    command: |-
+                      node --version
+                      npm run test
                   timeout: ""
                   type: Run
               - step:
