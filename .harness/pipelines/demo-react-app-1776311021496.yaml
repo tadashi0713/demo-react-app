@@ -11,49 +11,8 @@ pipeline:
         repoName: tadashi0713/demo-react-app
   stages:
     - stage:
-        identifier: build1
         name: build
-        spec:
-          caching:
-            enabled: true
-            paths: []
-          cloneCodebase: true
-          execution:
-            steps:
-              - step:
-                  identifier: test
-                  name: build and test
-                  spec:
-                    shell: Bash
-                    command: |-
-                      mkdir $HOME/nodejs
-                      curl -L https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz | tar xJ -C $HOME/nodejs
-                      export PATH=$HOME/nodejs/node-v${NODE_VERSION}-linux-x64/bin:$PATH
-                      node --version
-                      npm install
-                      npm run build
-                      npm run test
-                    envVariables:
-                      NODE_VERSION: 24.15.0
-                  timeout: ""
-                  type: Run
-              - step:
-                  type: BuildAndPushDockerRegistry
-                  name: push dockerhub
-                  identifier: BuildAndPushDockerRegistry_1
-                  spec:
-                    connectorRef: account.dockerhub
-                    repo: tadashi0713/demo-react-app
-                    tags:
-                      - latest
-                    caching: true
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud
-            spec: {}
-          buildIntelligence:
-            enabled: true
-        type: CI
-        description: ""
+        identifier: build1
+        template:
+          templateRef: Nodejs_CI_Template
+          versionLabel: "1"
