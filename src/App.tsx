@@ -13,6 +13,7 @@ function App() {
       minHeight: '100vh',
       gap: '20px'
     }}>
+      <h1>Docker Sandbox Demo</h1>
       <button
         onClick={() => setShowHello(true)}
         style={{
